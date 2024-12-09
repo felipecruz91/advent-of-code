@@ -20,3 +20,16 @@ func Test_getRealMultiInstructions(t *testing.T) {
 		require.Equal(t, 164730528, getRealMultiInstructions(f))
 	})
 }
+
+func Test_getRealMultiInstructionsPart2(t *testing.T) {
+	t.Run("test", func(t *testing.T) {
+		input := strings.NewReader("xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))")
+		require.Equal(t, 48, getRealMultiInstructionsPart2(input))
+	})
+	t.Run("input", func(t *testing.T) {
+		f, err := os.Open("data/input.txt")
+
+		require.NoError(t, err)
+		require.Equal(t, 70478672, getRealMultiInstructionsPart2(f))
+	})
+}
